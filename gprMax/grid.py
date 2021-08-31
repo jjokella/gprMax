@@ -88,8 +88,10 @@ class FDTDGrid(Grid):
         self.inputdirectory = ''
         self.outputdirectory = ''
         self.title = ''
-        self.messages = True
-        self.progressbars = False # self.messages
+        self.messages = False  # set default for first few outputs to False
+        # The first outputs in model_build_run.py use the default,
+        # independently of the input under "#messages".
+        self.progressbars = False  # self.messages
         self.memoryusage = 0
 
         # Get information about host machine
