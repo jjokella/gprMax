@@ -89,7 +89,7 @@ class FDTDGrid(Grid):
         self.outputdirectory = ''
         self.title = ''
         self.messages = True
-        self.progressbars = self.messages
+        self.progressbars = False # self.messages
         self.memoryusage = 0
 
         # Get information about host machine
