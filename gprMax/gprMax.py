@@ -117,7 +117,7 @@ def run_main(args):
     """
 
     # Print gprMax logo, version, and licencing/copyright information
-    logo(__version__ + ' (' + codename + ')')
+    # logo(__version__ + ' (' + codename + ')')
 
     with open_path_file(args.inputfile) as inputfile:
 
