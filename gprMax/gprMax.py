@@ -231,8 +231,8 @@ def run_std_sim(args, inputfile, usernamespace, optparams=None):
             modelusernamespace = usernamespace
         run_model(args, currentmodelrun, modelend - 1, numbermodelruns, inputfile, modelusernamespace)
     tsimend = timer()
-    simcompletestr = '\n=== Simulation completed in [HH:MM:SS]: {}'.format(datetime.timedelta(seconds=tsimend - tsimstart))
-    print('{} {}\n'.format(simcompletestr, '=' * (get_terminal_width() - 1 - len(simcompletestr))))
+    simcompletestr = '=== Simulation completed in [HH:MM:SS]: {}'.format(datetime.timedelta(seconds=tsimend - tsimstart))
+    print('{} {}'.format(simcompletestr, '=' * (get_terminal_width() - 1 - len(simcompletestr))))
 
 
 def run_benchmark_sim(args, inputfile, usernamespace):
