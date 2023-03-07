@@ -44,28 +44,42 @@ class Waveform(object):
         self.zeta = 0
         self.delay = 0
 
-    def calculate_coefficients(self):
+    def calculate_coefficients(self, chi=None, zeta=None):
         """Calculates coefficients (used to calculate values) for specific waveforms."""
 
         if self.type == 'gaussian' or self.type == 'gaussiandot' or self.type == 'gaussiandotnorm' or self.type == 'gaussianprime' or self.type == 'gaussiandoubleprime':
-            self.chi = 1 / self.freq
-            self.zeta = 2 * np.pi**2 * self.freq**2
+            if chi is None:
+                self.chi = 1 / self.freq
+            else:
+                self.chi = chi
+            if zeta is None:
+                self.zeta = 2 * np.pi**2 * self.freq**2
+            else:
+                self.zeta = zeta
         elif self.type == 'gaussiandotdot' or self.type == 'gaussiandotdotnorm' or self.type == 'ricker':
-            self.chi = np.sqrt(2) / self.freq
-            self.zeta = np.pi**2 * self.freq**2
+            if chi is None:
+                self.chi = np.sqrt(2) / self.freq
+            else:
+                self.chi = chi
+            if zeta is None:
+                self.zeta = np.pi**2 * self.freq**2
+            else:
+                self.zeta = zeta
 
-    def calculate_value(self, time, dt):
+    def calculate_value(self, time, dt, chi=None, zeta=None):
         """Calculates value of the waveform at a specific time.
 
         Args:
             time (float): Absolute time.
             dt (float): Absolute time discretisation.
+            chi (float): Coefficient used to calculate value (mean).
+            zeta (float): Coefficient used to calculate value (width).
 
         Returns:
             ampvalue (float): Calculated value for waveform.
         """
 
-        self.calculate_coefficients()
+        self.calculate_coefficients(chi=chi, zeta=zeta)
 
         # Waveforms
         if self.type == 'gaussian':
