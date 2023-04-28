@@ -492,7 +492,10 @@ def run_mpi_no_spawn_sim(args, inputfile, usernamespace, optparams=None):
     tags = Enum('tags', {'READY': 0, 'DONE': 1, 'EXIT': 2, 'START': 3})
 
     # Initializations and preliminaries
-    comm = MPI.COMM_WORLD
+    if args.mpicomm is not None:
+        comm = args.mpicomm
+    else:
+        comm = MPI.COMM_WORLD
     size = comm.Get_size()  # total number of processes
     rank = comm.Get_rank()  # rank of this process
     status = MPI.Status()   # get MPI status object
