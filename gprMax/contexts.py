@@ -125,7 +125,12 @@ class MPIContext(Context):
 
         from gprMax.mpi import MPIExecutor
 
-        self.comm = MPI.COMM_WORLD
+        # MPI communicator
+        # If set, use input `mpicomm`, otherwise MPI.COMM_WORLD
+        if config.sim_config.args.mpicomm is not None:
+            self.comm = config.sim_config.args.mpicomm
+        else:
+            self.comm = MPI.COMM_WORLD
         self.rank = self.comm.rank
         self.MPIExecutor = MPIExecutor
 

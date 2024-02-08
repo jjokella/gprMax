@@ -31,6 +31,7 @@ args_defaults = {
     "n": 1,
     "i": None,
     "mpi": False,
+    "mpicomm": None,
     "gpu": None,
     "opencl": None,
     "subgrid": False,
@@ -59,6 +60,8 @@ help_msg = {
     "models to be farmed out using a MPI task farm, e.g. to create a "
     "B-scan with 60 traces and use MPI to farm out each trace. For "
     "further details see the performance section of the User Guide.",
+    "mpicomm": "(MPI Communicator, opt): MPI communicator as replacement for "
+    "World-Communicator. ",
     "gpu": "(list/bool, opt): Flag to use NVIDIA GPU or list of NVIDIA GPU " "device ID(s) for specific GPU card(s).",
     "opencl": "(list/bool, opt): Flag to use OpenCL or list of OpenCL device " "ID(s) for specific compute device(s).",
     "subgrid": "(bool, opt): Flag to use sub-gridding.",
@@ -84,6 +87,7 @@ def run(
     n=args_defaults["n"],
     i=args_defaults["i"],
     mpi=args_defaults["mpi"],
+    mpicomm=args_defaults["mpicomm"],
     gpu=args_defaults["gpu"],
     opencl=args_defaults["opencl"],
     subgrid=args_defaults["subgrid"],
@@ -115,6 +119,7 @@ def run(
                 e.g. to create a B-scan with 60 traces and use MPI to farm out
                 each trace. For further details see the performance section of
                 the User Guide
+        mpicomm: MPI communicator as replacement for World-Communicator.
         gpu: optional list/boolean to use NVIDIA GPU or list of NVIDIA GPU device
                 ID(s) for specific GPU card(s).
         opencl: optional list/boolean to use OpenCL or list of OpenCL device ID(s)
@@ -144,6 +149,7 @@ def run(
             "n": n,
             "i": i,
             "mpi": mpi,
+            "mpicomm": mpicomm,
             "gpu": gpu,
             "opencl": opencl,
             "subgrid": subgrid,
