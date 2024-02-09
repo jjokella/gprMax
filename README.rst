@@ -7,12 +7,9 @@
 .. image:: docs/source/images/gprMax_logo_small.png
     :target: http://www.gprmax.com
 
-***************
-Getting Started
-***************
-
+*************************
 Changes for SPOTPY-gprMax
-==========================
+*************************
 
 - logo not printed, less newlines in output, defaults for
   ``self.messages`` and ``self.progressbars`` set to ``False``
@@ -23,6 +20,10 @@ Changes for SPOTPY-gprMax
 
 - MPI: for ``mpi_no_spawn``, use the input communicator if it is given
 
+
+***************
+Getting Started
+***************
 
 What is gprMax?
 ===============
